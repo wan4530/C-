@@ -3,16 +3,15 @@
 #include <stdio.h>
 
 int main(){
-    int n;
+    int n, x;
     int a[100] = { 0, };
     int b[100] = { 0, };
-    int x;
     scanf("%d", &n);
     for (int i = 0; i < n; i++) {
-        scanf("%d ", &a[i]);
+        scanf("%d", &a[i]);
     }
     for (int i = 0; i < n; i++) {
-        scanf("%d ", &b[i]);
+        scanf("%d", &b[i]);
     }
     scanf("%d", &x);
     for (int i = 0; i < n; i++) {
