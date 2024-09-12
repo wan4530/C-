@@ -3,7 +3,7 @@
 #include <stdio.h>
 
 int main() {
-    int n, id;
+    int n;
     int max = 0, min = 0;
     int x = 0, y = 0;
     int a[100] = { 0, };
@@ -25,18 +25,16 @@ int main() {
         y += b[i];
         c[i] = a[i] - b[i];
     }
-    scanf("%d", &id);
-    printf("%d\n", c[id - 1]);
-    printf("Àç°í ¼ö·®:");
+    printf("ìž¬ê³  ìˆ˜ëŸ‰:");
     for (int i = 0; i < n; i++) {
         printf("%d ", c[i]);
     }
-    printf("\nÃÑ ÆÇ¸Å·®:%d(ÆÇ¸ÅÀ² %.2f%)\n", y,(float)y/(float)x*100);
-    printf("°¡Àå ¸¹ÀÌ ÆÇ¸ÅµÈ »óÇ°:ID %d,ÆÇ¸Å·® %d\n", max+1,b[max]);
-    printf("°¡Àå Àû°Ô ÆÇ¸ÅµÈ »óÇ°:ID %d ÆÇ¸Å·® %d\n", min+1, b[min]);
+    printf("\nì´ íŒë§¤ëŸ‰:%d(íŒë§¤ìœ¨ %.2f%)\n", y,(float)y/(float)x*100);
+    printf("ê°€ìž¥ ë§Žì´ íŒë§¤ëœ ìƒí’ˆ:ID %d,íŒë§¤ëŸ‰ %d\n", max+1,b[max]);
+    printf("ê°€ìž¥ ì ê²Œ íŒë§¤ëœ ìƒí’ˆ:ID %d íŒë§¤ëŸ‰ %d\n", min+1, b[min]);
     for (int i = 0; i < n; i++) {
         if (c[i] <= 2) {
-            printf("»óÇ° ID %d: Àç°íºÎÁ·(%d)\n", i + 1, c[i]);
+            printf("ìƒí’ˆ ID %d: ìž¬ê³ ë¶€ì¡±(%d)\n", i + 1, c[i]);
         }
     }
     return 0;
