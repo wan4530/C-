@@ -3,27 +3,27 @@
 #include <stdio.h>
 void f_stock(int* pstock);
 void f_sell(int* psell);
-void f_n(int* pstock, int* psell);
+void f_n(int* pstock, int* psell, char(*name)[10]);
 void f_name(char(*pname)[10]);
 int main(void) {
 	int m = 0;
 	int stock[5] = { 0, };
 	int sell[5] = { 0, };
-	char name[5][100] = { 0, };
+	char name[5][10] = { 0, };
 	while (1) {
-		printf("¿øÇÏ´Â ¸Ş´º¸¦ ¼±ÅÃÇÏ½Ã¿À(1.ÀÔ°í, 2.ÆÇ¸Å, 3.»óÇ°ÇöÈ², 4.Á¾·á)\n");
+		printf("ì›í•˜ëŠ” ë©”ë‰´ë¥¼ ì„ íƒí•˜ì‹œì˜¤(1.ì…ê³ , 2.íŒë§¤, 3.ìƒí’ˆí˜„í™©, 4.ìƒí’ˆëª… ì…ë ¥, 5.ì¢…ë£Œ)\n");
 		scanf("%d", &m);
 		if (m == 1) {
-			f_stock(&stock);
+			f_stock(stock);
 		}
 		else if (m == 2) {
-			f_sell(&sell);
+			f_sell(sell);
 		}
 		else if (m == 3) {
-			f_n(&stock, &sell, name);
+			f_n(stock, sell, name);
 		}
 		else if (m == 4) {
-			f_name(&name);
+			f_name(name);
 		}
 		else {
 			break;
@@ -34,7 +34,7 @@ int main(void) {
 void f_stock(int* pstock) {
 	int j;
 	int k;
-	printf("ÀÔ°í¼ö·® ÀÔ·Â : ÀüÃ¼ »óÇ° ÀÔ°í¼ö·® ÀÔ·Â 1, °³º° »óÇ° ÀÔ·Â2¸¦ ¼±ÅÃ\n");
+	printf("ì…ê³ ìˆ˜ëŸ‰ ì…ë ¥ : ì „ì²´ ìƒí’ˆ ì…ê³ ìˆ˜ëŸ‰ ì…ë ¥ 1, ê°œë³„ ìƒí’ˆ ì…ë ¥2ë¥¼ ì„ íƒ\n");
 	scanf("%d", &j);
 	if (j == 1) {
 		for (int i = 0; i < 5; i++) {
@@ -42,16 +42,16 @@ void f_stock(int* pstock) {
 		}
 	}
 	else if (j == 2) {
-		printf("»óÇ°ID : ");
+		printf("ìƒí’ˆID : ");
 		scanf("%d", &k);
-		printf("\nÀÔ°í¼ö·® : ");
+		printf("\nì…ê³ ìˆ˜ëŸ‰ : ");
 		scanf("%d", (pstock + k - 1));
 	}
 }
 void f_sell(int* psell) {
 	int j;
 	int k;
-	printf("ÆÇ¸Å¼ö·® ÀÔ·Â : ÀüÃ¼ »óÇ° ÆÇ¸Å¼ö·® ÀÔ·Â 1, °³º° »óÇ° ÀÔ·Â2¸¦ ¼±ÅÃ\n");
+	printf("íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥ : ì „ì²´ ìƒí’ˆ íŒë§¤ìˆ˜ëŸ‰ ì…ë ¥ 1, ê°œë³„ ìƒí’ˆ ì…ë ¥2ë¥¼ ì„ íƒ\n");
 	scanf("%d", &j);
 	if (j == 1) {
 		for (int i = 0; i < 5; i++) {
@@ -59,16 +59,16 @@ void f_sell(int* psell) {
 		}
 	}
 	else if (j == 2) {
-		printf("»óÇ°ID : ");
+		printf("ìƒí’ˆID : ");
 		scanf("%d", &k);
-		printf("\nÆÇ¸Å¼ö·® : ");
+		printf("\níŒë§¤ìˆ˜ëŸ‰ : ");
 		scanf("%d", (psell + k - 1));
 	}
 }
 void f_n(int* pstock, int* psell, char(*name)[10]) {
 	int x = 0, y = 0;
 	int max = 0, min = 0;
-	printf("Àç°í¼ö·® : ");
+	printf("ì¬ê³ ìˆ˜ëŸ‰ : ");
 	for (int i = 0; i < 5; i++) {
 		printf("%d ", *(pstock + i) - *(psell + i));
 		x += *(pstock + i);
@@ -80,19 +80,18 @@ void f_n(int* pstock, int* psell, char(*name)[10]) {
 			min = i;
 		}
 	}
-	printf("\nÆÇ¸Å·® : %d(ÆÇ¸ÅÀ² %.2f%)\n", y, (float)y / (float)x * 100);
-	printf("°¡Àå ¸¹ÀÌ ÆÇ¸ÅµÈ »óÇ°:ID %d, »óÇ°¸í : %s, ÆÇ¸Å·® %d\n", max + 1, *(name+max), *(psell + max));
-	printf("°¡Àå Àû°Ô ÆÇ¸ÅµÈ »óÇ°:ID %d, »óÇ°¸í : %s, ÆÇ¸Å·® %d\n", min + 1, *(name + min), *(psell + min));
+	printf("\níŒë§¤ëŸ‰ : %d, íŒë§¤ìœ¨ %.2f\n", y, (float)y / (float)x * 100);
+	printf("ê°€ì¥ ë§ì´ íŒë§¤ëœ ìƒí’ˆ:ID %d, ìƒí’ˆëª… : %s, íŒë§¤ëŸ‰ %d\n", max + 1, *(name+max), *(psell + max));
+	printf("ê°€ì¥ ì ê²Œ íŒë§¤ëœ ìƒí’ˆ:ID %d, ìƒí’ˆëª… : %s, íŒë§¤ëŸ‰ %d\n", min + 1, *(name + min), *(psell + min));
 	for (int i = 0; i < 5; i++) {
 		if (*(pstock + i) - *(psell + i) <= 2) {
-			printf("»óÇ° ID %d: »óÇ°¸í : %s : Àç°íºÎÁ·(%d)\n", i + 1, *(name + i), *(pstock + i) - *(psell + i));
+			printf("ìƒí’ˆ ID %d: ìƒí’ˆëª… : %s : ì¬ê³ ë¶€ì¡±(%d)\n", i + 1, *(name + i), *(pstock + i) - *(psell + i));
 		}
 	}
 }
 void f_name(char(*pname)[10]) {
 	for (int i = 0; i < 5; i++) {
-		printf("ID %d »óÇ°¸í : ", i + 1);
+		printf("ID %d ìƒí’ˆëª… : ", i + 1);
 		scanf("%s", *(pname+i));
-		printf("\n");
 	}
 }
