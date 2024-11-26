@@ -34,7 +34,7 @@ LOTTO createAuto(int ID) {
 		if (i == 0) l.number[i] = num;
 		else if (i > 0 && !dup(l, num, i - 1)) l.number[i] = num;
 		else {
-			printf("Áßº¹¹ß»ı\n");
+			printf("ì¤‘ë³µë°œìƒ\n");
 			i--;
 		}
 	}
@@ -67,7 +67,7 @@ LOTTO drawingLotto() {
 		if (i == 0) l.number[i] = num;
 		else if (i > 0 && !dup(l, num, i - 1)) l.number[i] = num;
 		else {
-			printf("Áßº¹¹ß»ı\n");
+			printf("ì¤‘ë³µë°œìƒ\n");
 			i--;
 		}
 	}
@@ -83,7 +83,7 @@ int matchCount(LOTTO l1, LOTTO l2) {
 		for (int j = 0; j < 6; j++) {
 			if (l1.number[i] == l2.number[j]) {
 				mcount++;
-				printf("%d°¡ ¸Â¾Ò½À´Ï´Ù.\n", l1.number[i]);
+				printf("%dê°€ ë§ì•˜ìŠµë‹ˆë‹¤.\n", l1.number[i]);
 			}
 		}
 		//if (l1.number[i] == l2.bonus) mcount++;
