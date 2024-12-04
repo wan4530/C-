@@ -18,6 +18,7 @@ int main(void) {
 	while (!feof(fp)) {
 		fgets(input, 100, fp);
 		printf("%s", input);
+		//puts(input) 이렇게하면 \n가 쳐서 나옴
 	}
 	fclose(fp);
 	return 0;
