@@ -9,7 +9,7 @@ typedef struct point {
 }POINT;
 int inputMenu() {
 	int input;
-	printf("1. point ¸¸µé±â, 2. Ãâ·ÂÇÏ±â, 3. Å¬¸®¾î, 4. ÆÄÀÏÀúÀå, 5. ÆÄÀÏ·Îµå, -1. Á¾·á\n");
+	printf("1. point ë§Œë“¤ê¸°, 2. ì¶œë ¥í•˜ê¸°, 3. í´ë¦¬ì–´, 4. íŒŒì¼ì €ì¥, 5. íŒŒì¼ë¡œë“œ, -1. ì¢…ë£Œ\n");
 	scanf("%d", &input);
 	return input;
 }
@@ -47,7 +47,7 @@ int loadFile(POINT* p[], int max) {
 	fseek(fp, 0, SEEK_END);
 	fSize = ftell(fp);
 	fCount = fSize / sizeof(POINT);
-	rewind(fp);
+	rewind(fp);					//íŒŒì¼ìœ„ì¹˜ì§€ì •ì ì²˜ìŒìœ¼ë¡œ
 
 	for (int i = 0; i < fCount; i++) {
 		if (i == max) break;
@@ -72,7 +72,7 @@ int main(void){
 			printPoint(points, count);
 			break;
 		case 3:
-			system("cls");
+			system("cls");			//í™”ë©´ í´ë¦¬ì–´
 			break;
 		case 4: //file save
 			if (!saveFile(points, count)) {
@@ -85,7 +85,7 @@ int main(void){
 			break;
 		case -1:
 			freePoints(points, count);
-			printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+			printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
 			break;
 		}
 	} while (menu > 0);
