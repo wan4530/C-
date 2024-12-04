@@ -48,7 +48,7 @@ int main(void){
 	printPoints(p, 10);
 	fp = fopen("struct.bin", "rb");
 	if (fp == NULL) exit(-1);
-	fseek(fp, sizeof(POINT) * 3, SEEK_SET);
+	fseek(fp, sizeof(POINT) * 3, SEEK_SET);			//SEEK_SET : 파일의 시작, SEEK_CUR : 현재 위치지정자 위치, SEEK_END : 파일의 끝
 	pi = ftell(fp);
 	printf("pi = %d\n",pi);
 	fread(&p2, sizeof(POINT), 1, fp);
